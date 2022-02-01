@@ -90,19 +90,56 @@ class DoublyLinkedList {
     return this
   }
 
+  get (idx) {
+    // get 
+    if (idx < 0 || idx > this.length) return null
+    
+    const fromTail = this.length - 1 - idx
+    const fromHead = idx
+    let node = null
+    let cur = null
+
+    let count = 0
+    if (fromTail < fromHead) {
+      cur = this.tail
+      while (count < fromTail) {
+        count++
+        cur = cur.prev
+      }
+
+      node = cur
+    } else {
+      cur = this.head
+
+      while (count < fromHead) {
+        count++
+        cur = cur.next
+      }
+
+      node = cur
+    }
+
+    return node
+  }
+
 }
 
 const dl = new DoublyLinkedList()
 
-console.log(dl.unshift(10))
-console.log(dl.unshift(20))
-// dl.unshift(30)
-
-// console.log(dl.shift())
-// console.log(dl.shift())
-// console.log(dl.shift())
-// console.log(dl.shift())
-// console.log(dl.shift())
+dl.push(10)
+dl.push(20)
+dl.push(30)
+dl.push(40)
+dl.push(50)
+dl.push(60)
 
 
-console.log(dl);
+
+console.log(dl.get(2))
+// console.log(dl.shift())
+// console.log(dl.shift())
+// console.log(dl.shift())
+// console.log(dl.shift())
+
+
+console.log(dl)
