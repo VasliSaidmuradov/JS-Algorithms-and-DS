@@ -148,6 +148,26 @@ class DoublyLinkedList {
 
     return true
   }
+
+  remove (idx) {
+    if (idx < 0 || idx >= this.length) return null
+   
+    if (idx === 0) return this.shift()
+    if (idx === this.length - 1) return this.pop()
+
+    const cur = this.get(idx)
+    const prev = cur.prev
+    const next = cur.next
+
+    prev.next = next
+    next.prev = prev
+    cur.prev = null
+    cur.next = null
+    
+    this.length--
+
+    return cur
+  }
 }
 
 const dl = new DoublyLinkedList()
@@ -158,10 +178,5 @@ dl.push(30)
 // dl.push(40)
 // dl.push(50)
 // dl.push(60)
-
-
-
-// console.log(dl.insert(0, 'start'))
-// console.log(dl.insert(1, '2'))
 
 console.log(dl)
