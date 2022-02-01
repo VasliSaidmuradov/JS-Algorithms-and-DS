@@ -13,6 +13,7 @@ class DoublyLinkedList {
     this.length = 0
   }
 
+  // add node to the tail
   push (val) {
     const newNode = new Node(val)
 
@@ -30,6 +31,7 @@ class DoublyLinkedList {
     return this
   }
 
+  // remove node from the tail
   pop () {
     if (!this.length) return null
 
@@ -50,7 +52,7 @@ class DoublyLinkedList {
     return oldTail
   }
 
-  // remove from the head
+  // remove node from the head
   shift () {
     if (!this.length) return null
 
@@ -70,19 +72,37 @@ class DoublyLinkedList {
 
     return oldHead
   }
+
+  // add node to the head
+  unshift (val) {
+    const newNode = new Node(val)
+
+    if (!this.length) {
+      this.head = newNode
+      this.tail = newNode
+    } else {
+      newNode.next = this.head
+      this.head.prev = newNode
+      this.head = newNode
+    }
+
+    this.length++
+    return this
+  }
+
 }
 
 const dl = new DoublyLinkedList()
 
-dl.push(10)
-dl.push(20)
-dl.push(30)
+console.log(dl.unshift(10))
+console.log(dl.unshift(20))
+// dl.unshift(30)
 
-console.log(dl.shift())
-console.log(dl.shift())
-console.log(dl.shift())
-console.log(dl.shift())
-console.log(dl.shift())
+// console.log(dl.shift())
+// console.log(dl.shift())
+// console.log(dl.shift())
+// console.log(dl.shift())
+// console.log(dl.shift())
 
 
 console.log(dl);
