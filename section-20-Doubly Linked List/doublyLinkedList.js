@@ -91,7 +91,7 @@ class DoublyLinkedList {
   }
 
   get (idx) {
-    // get 
+    // get node with index [idx]
     if (idx < 0 || idx > this.length) return null
     
     const fromTail = this.length - 1 - idx
@@ -122,6 +122,17 @@ class DoublyLinkedList {
     return node
   }
 
+  set (idx, val) {
+    // set new value [val] to node with index [idx]
+    const node = this.get(idx)
+
+    if (node) {
+      node.val = val
+      return true
+    }
+
+    return false
+  }
 }
 
 const dl = new DoublyLinkedList()
@@ -135,7 +146,9 @@ dl.push(60)
 
 
 
-console.log(dl.get(2))
+console.log(dl.set(0, 'start'))
+console.log(dl.set(-5, 'end'))
+console.log(dl.set(1, '2'))
 // console.log(dl.shift())
 // console.log(dl.shift())
 // console.log(dl.shift())
