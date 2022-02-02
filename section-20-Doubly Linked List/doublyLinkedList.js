@@ -168,6 +168,32 @@ class DoublyLinkedList {
 
     return cur
   }
+
+  reverse () {
+    if (this.length <= 1) return this
+
+    let cur = this.head
+    let prev = null
+
+    while (cur && cur.next) {
+      let next = cur.next
+      let temp = cur.next
+
+      cur.next = prev
+      cur.prev = next
+      next.prev = cur
+      prev = cur
+      cur = temp
+    }
+
+    const head = this.head
+    this.head = this.tail
+    this.head.next = this.head.prev
+    this.head.prev = null
+    this.tail = head
+
+    return this
+  }
 }
 
 const dl = new DoublyLinkedList()
@@ -175,8 +201,8 @@ const dl = new DoublyLinkedList()
 dl.push(10)
 dl.push(20)
 dl.push(30)
-// dl.push(40)
-// dl.push(50)
-// dl.push(60)
+dl.push(40)
+dl.push(50)
+dl.push(60)
 
-console.log(dl)
+console.log(dl.reverse())
