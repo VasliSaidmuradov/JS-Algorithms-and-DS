@@ -37,8 +37,6 @@ class Stack {
   }
 
   pop () {
-    // 4 3 2
-
     if (!this.size) return null
 
     const removed = this.first
