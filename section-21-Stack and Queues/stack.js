@@ -17,21 +17,14 @@ class Node {
 class Stack {
   constructor () {
     this.first = null
-    this.last = null
     this.size = 0
   }
 
   push (val) {
     const newNode = new Node(val)
 
-    if (!this.size) {
-      this.first = newNode
-      this.last = newNode
-    } else {
-      const temp = this.first
-      newNode.next = temp
-      this.first = newNode
-    }
+    newNode.next = this.first
+    this.first = newNode
 
     return ++this.size
   }
@@ -40,10 +33,6 @@ class Stack {
     if (!this.size) return null
 
     const removed = this.first
-
-    if (this.size === 1) {
-      this.last = null
-    }
 
     this.first = this.first.next
 
@@ -55,10 +44,10 @@ class Stack {
 
 const stack = new Stack()
 
-console.log(stack.push(1));
-console.log(stack.push(2));
-console.log(stack.push(3));
-console.log(stack.push(4));
+console.log(stack.push(10));
+console.log(stack.push(20));
+console.log(stack.push(30));
+console.log(stack.push(40));
 
 console.log(stack);
 

@@ -40,16 +40,16 @@ class Queue {
   dequeue () {
     if (!this.size) return null
 
-    const temp = this.first
+    const removed = this.first
 
     if (this.size === 1) {
       this.last = null
     }
 
-    this.first = temp.next
+    this.first = removed.next
     this.size--
 
-    return temp.val
+    return removed.val
   }
 }
 
